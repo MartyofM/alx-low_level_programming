@@ -41,7 +41,7 @@ int main(void)
 			printf("%i", 0);
 			initial0s--;
 		}
-		printf("%lu", 0);
+		printf("%lu", f1);
 
 		tmp = (f1 + f2) % mx;
 		tmpo = f10 + f20 + (f1 + f2) / mx;

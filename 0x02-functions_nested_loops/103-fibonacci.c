@@ -15,7 +15,7 @@ int main(void)
 	while (p + n < 4000000)
 	{
 		p += n;
-	if ( p % 2 == 0)
+	if (p % 2 == 0)
 	sum += p;
 	n = p - n;
 	++m;

@@ -16,7 +16,7 @@ int main(void)
 	if (s == 0)
 		printf("%ld", t);
 	else if (s == 1)
-		printf("%ld", r);
+		printf(", %ld", r);
 	else
 	{
 		r += t;

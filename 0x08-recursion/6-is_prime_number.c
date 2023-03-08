@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 
-int chack_prime(int n, int i);
+int check_prime(int n, int i);
 
 /**
  * is_prime_number - Returns if a number is prime
@@ -34,5 +34,5 @@ int check_prime(int n, int i)
 	if ((n / i) < i)
 		return (1);
 
-	return (chack_prime(n, i + 1));
+	return (check_prime(n, i + 1));
 }

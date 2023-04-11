@@ -9,13 +9,13 @@
 void print_binary(unsigned long int n)
 {
 	int j, count = 0;
-	unsigned long int put;
+	unsigned long int current;
 
 	for (j = 31; j >= 0; j--)
 	{
-		put = n >> j;
+		current = n >> j;
 
-		if (put & 1)
+		if (current & 1)
 		{
 			_putchar('1');
 			count++;

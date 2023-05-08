@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char *create_buffer(char *file);
 void close_file(int fd);
+char *create_buffer(char *file);
+
 
 /**
  * create_buffer - ...
@@ -20,7 +21,7 @@ char *create_buffer(char *file)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: can't write to %s\n", file);
+		dprintf(STDERR_FILENO, "Error: cannot write to %s\n", file);
 		exit(99);
 	}
 	return (buffer);
@@ -33,13 +34,13 @@ char *create_buffer(char *file)
 
 void close_file(int fd)
 {
-	int c;
+	int d;
 
-	c = close(fd);
+	d = close(fd);
 
-	if (c == -1)
+	if (d == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", fd);
+		dprintf(STDERR_FILENO, "Error: cannot close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -54,37 +55,37 @@ void close_file(int fd)
 
 int main(int argc, char *argv[])
 {
-	int to, w, r, from;
+	int to, d, f, from;
 	char *buffer;
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: copy file_from file_to\n");
 		exit(97);
 	}
 	buffer = create_buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
-	r = read(from, buffer, 1024);
+	f = read(from, buffer, 1024);
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (from == -1 || r == -1)
+		if (from == -1 || f == -1)
 		{
 			dprintf(STDERR_FILENO,
-					"Error: can't read from file %s\n", argv[1]);
+					"Error: cannot read from file %s\n", argv[1]);
 			exit(98);
 		}
-		w = write(to, buffer, r);
-		if (to == -1 || w == -1)
+		d = write(to, buffer, f);
+		if (to == -1 || d == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: can't write %s\n",
+			dprintf(STDERR_FILENO, "Error: cannot write %s\n",
 					argv[2]);
 			free(buffer);
 			exit(99);
 		}
-		r = read(from, buffer, 1024);
+		f = read(from, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
-	} while (r > 0);
+	} while (f > 0);
 	free(buffer);
 	close_file(to);
 	close_file(from);

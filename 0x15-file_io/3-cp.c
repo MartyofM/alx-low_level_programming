@@ -55,7 +55,7 @@ void close_file(int fd)
 
 int main(int argc, char *argv[])
 {
-	int to, d, f, from;
+	int from, d, f, to;
 	char *buffer;
 
 	if (argc != 3)
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 		to = open(argv[2], O_WRONLY | O_APPEND);
 	} while (f > 0);
 	free(buffer);
-	close_file(to);
 	close_file(from);
+	close_file(to);
 	return (0);
 }
